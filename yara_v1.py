@@ -4,8 +4,13 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from sklearn.metrics import accuracy_score
+import torch
+import torch.nn as nn
+from torch.utils.data import Dataset, DataLoader
+
+
 
 def extract_yara_rules(yara_text):
     rules = []
@@ -261,8 +266,8 @@ df.to_csv("yara_features.csv", index=False)
 
 
 
-# # Split dataset into training and testing sets
-# X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
+# Split dataset into training and testing sets
+# X_train, X_test, y_train, y_test = train_test_split(X, y2_encoded, test_size=0.3, random_state=42)
 
 # # Train a Random Forest model for classification
 # model = RandomForestClassifier(n_estimators=100, random_state=42)
